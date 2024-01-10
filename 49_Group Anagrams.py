@@ -11,8 +11,5 @@ class Solution(object):
                 hash_map[sort_str].append(i)
             else:
                 hash_map[sort_str] = [i]
-        final_arr = []
-        for s in hash_map.values():
-            final_arr.append(s)
 
-        return final_arr
+        return hash_map.values()
