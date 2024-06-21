@@ -73,3 +73,16 @@ JOIN Activity A2 ON A1.machine_id = A2.machine_id
   AND A2.activity_type = 'end'
 GROUP BY machine_id;
 ```
+
+## 1731. The Number of Employees Which Report to Each Employee
+```sql
+SELECT e2.employee_id        AS employee_id,
+       e2.name               AS name,
+       Count(*)              AS reports_count,
+       Round(Avg(e1.age), 0) AS average_age
+FROM   employees e1
+       JOIN employees e2
+         ON e1.reports_to = e2.employee_id
+GROUP  BY e2.employee_id
+ORDER  BY employee_id; 
+```
