@@ -86,3 +86,18 @@ FROM   employees e1
 GROUP  BY e2.employee_id
 ORDER  BY employee_id; 
 ```
+
+## 602. Friend Requests II: Who Has the Most Friends
+```sql
+WITH combining_ids as(
+    SELECT requester_id as id FROM RequestAccepted
+    UNION ALL
+    SELECT accepter_id as id FROM RequestAccepted
+)
+
+SELECT id, count(*) as num
+FROM combining_ids
+GROUP BY id
+ORDER BY num DESC
+LIMIT 1;
+```
