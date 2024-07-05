@@ -89,15 +89,16 @@ ORDER  BY employee_id;
 
 ## 602. Friend Requests II: Who Has the Most Friends
 ```sql
-WITH combining_ids as(
-    SELECT requester_id as id FROM RequestAccepted
-    UNION ALL
-    SELECT accepter_id as id FROM RequestAccepted
-)
-
-SELECT id, count(*) as num
-FROM combining_ids
+WITH combining_ids AS
+(
+       SELECT requester_id AS id
+       FROM   requestaccepted
+       UNION ALL
+       SELECT accepter_id AS id
+       FROM   requestaccepted )
+SELECT   id,
+         Count(*) AS num
+FROM     combining_ids
 GROUP BY id
-ORDER BY num DESC
-LIMIT 1;
+ORDER BY num DESC limit 1;
 ```
